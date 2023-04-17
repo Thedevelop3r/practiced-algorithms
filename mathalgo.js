@@ -6,7 +6,6 @@ function factorial(number){
     return sequence.reduce((acc, next)=> acc*next);
 }
 // factorial(4)
-
 function isPrimeNumber(number){
     let prime = true;
     for(let i=1; i<= number; i++){
@@ -20,14 +19,11 @@ function isPrimeNumber(number){
     return prime;
 }
 // isPrimeNumber(5)
-
 function linearSearch(arrayOfNum, t){
     return arrayOfNum.indexOf(t);
 }
-
 // console.log(linearSearch([0,3,2,5,6,7,1], 9)); // -1
 // console.log(linearSearch([0,3,2,5,6,7,1], 5)); // 3
-
 function binarySearch(sortedArray, t){
     // [1,2,3,4,5,6,7,8,9,10]
     // could be simplified by removing the direction logic with only for loops
@@ -53,7 +49,6 @@ function binarySearch(sortedArray, t){
             if(sortedArray[i] == t) return i;
         }
     }
-
     return -1;
 }
 

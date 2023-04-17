@@ -1,5 +1,5 @@
 function validatePIN(pin) {
-    return /^(\d{4}|\d{6})$/.test(pin)
+  return /^(\d{4}|\d{6})$/.test(pin);
 }
 /* for my future referencing,
  
@@ -14,4 +14,4 @@ function validatePIN(pin) {
    
 */
 
-console.log(validatePIN("23943"))
+console.log(validatePIN('23943'));

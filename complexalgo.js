@@ -1,33 +1,32 @@
-// Given two strings s and t, both consisting of lowercase English letters and digits, 
-//your task is to calculate how many ways exactly one digit could be removed 
-//from one of the strings so that s is lexicographically smaller than t 
-//after the removal. Note that we are removing only a single instance of 
-//a single digit, rather than all instances 
+// Given two strings s and t, both consisting of lowercase English letters and digits,
+//your task is to calculate how many ways exactly one digit could be removed
+//from one of the strings so that s is lexicographically smaller than t
+//after the removal. Note that we are removing only a single instance of
+//a single digit, rather than all instances
 //(eg: removing 1 from the string a11b1c could result in a1b1c or a11bc, but not abc).
 
 // Also note that digits are considered lexicographically smaller than letters.
 
-
-// function solution(s, t) {
-//     let count = 0;
-//     for (let i = 0; i < s.length; i++) {
-//         if (/\d/.test(s[i])) {
-//             const stringS = s.slice(0, i) + s.slice(i + 1);
-//             if (stringS < t) {
-//                 count++;
-//             }
-//         }
-//     }
-//     for (let i = 0; i < t.length; i++) {
-//         if (/\d/.test(t[i])) {
-//             const stringT = t.slice(0, i) + t.slice(i + 1);
-//             if (s < stringT) {
-//                 count++;
-//             }
-//         }
-//     }
-//     return count;
-// }
+function solution(s, t) {
+  let count = 0;
+  for (let i = 0; i < s.length; i++) {
+    if (/\d/.test(s[i])) {
+      const stringS = s.slice(0, i) + s.slice(i + 1);
+      if (stringS < t) {
+        count++;
+      }
+    }
+  }
+  for (let i = 0; i < t.length; i++) {
+    if (/\d/.test(t[i])) {
+      const stringT = t.slice(0, i) + t.slice(i + 1);
+      if (s < stringT) {
+        count++;
+      }
+    }
+  }
+  return count;
+}
 
 // Given an array of integers a, your task is to find how many of its contiguous subarrays of length m contain a pair of integers with a sum equal to k.
 
@@ -86,105 +85,82 @@
 
 // An integer representing the number of subarrays that contain a pair of integers with a sum of k.
 
-
-
-
-// function solution(a, m, k) {
-//     let count = 0;
-//     for (let i = 0; i <= a.length - m; i++) {
-//         let subarray = a.slice(i, i + m);
-//         let pairs = new Set();
-//         for (let j = 0; j < subarray.length; j++) {
-//             let complement = k - subarray[j];
-//             if (pairs.has(complement)) {
-//                 count++;
-//                 break;
-//             }
-//             pairs.add(subarray[j]);
-//         }
-//     }
-//     return count;
-// }
-
-
-
-
-
+function solution(a, m, k) {
+  let count = 0;
+  for (let i = 0; i <= a.length - m; i++) {
+    let subarray = a.slice(i, i + m);
+    let pairs = new Set();
+    for (let j = 0; j < subarray.length; j++) {
+      let complement = k - subarray[j];
+      if (pairs.has(complement)) {
+        count++;
+        break;
+      }
+      pairs.add(subarray[j]);
+    }
+  }
+  return count;
+}
 
 // my algorither for century detection opetion 1
 
 function solution(year) {
-
-    // 1300/13 == 100
-    //
-    const YEAR = typeof year === "string" ? Number(year) : year;
-    const isCentury = YEAR >= 100;
-    //Globals
-    const MAX_Limit = YEAR;
-
-    let result = 0;
-
-    if (isCentury) {
-        const counter = {}
-        counter.loop1 = 0, counter.loop2 = 0, counter.mainloop = 0;
-
-        for (let i = MAX_Limit; i > 0; i--) {
-            counter.mainloop += 1;
-
-            if (YEAR / i === 100 || YEAR / i === 100.0) {
-                // i is the returned century
-                counter.loop1 += 1;
-                result = i;
-                break;
-
-            } else if (YEAR / i > 100.0) {
-                // i+1 is the century
-                counter.loop2 += 1;
-                result = i + 1;
-                break;
-            }
-        }
-
-        console.log(counter);
-        return result;
-
-    } else {
-        return 1;
+  // 1300/13 == 100
+  const YEAR = typeof year === 'string' ? Number(year) : year;
+  const isCentury = YEAR >= 100;
+  //Globals
+  const MAX_Limit = YEAR;
+  let result = 0;
+  if (isCentury) {
+    const counter = {};
+    (counter.loop1 = 0), (counter.loop2 = 0), (counter.mainloop = 0);
+    for (let i = MAX_Limit; i > 0; i--) {
+      counter.mainloop += 1;
+      if (YEAR / i === 100 || YEAR / i === 100.0) {
+        // i is the returned century
+        counter.loop1 += 1;
+        result = i;
+        break;
+      } else if (YEAR / i > 100.0) {
+        // i+1 is the century
+        counter.loop2 += 1;
+        result = i + 1;
+        break;
+      }
     }
+    console.log(counter);
+    return result;
+  } else {
+    return 1;
+  }
 }
 
 // option 2
 
 function getCentury(year) {
-    return Math.ceil(year / 100);
+  return Math.ceil(year / 100);
 }
-
 
 const centuries = [];
 let currentC = 0;
 
 for (let x = 0; x < 2023; x++) {
-    // console.log(`-----------------------------------------`)
-    // console.log(`\nGETCENTURY:\n year:${x} Century-> ${getCentury(x)} \n`);
-    // //...
-    // console.log(`\nSolution:\n year:${x} Century-> ${solution(x)} \n`);
+  // console.log(`-----------------------------------------`)
+  // console.log(`\nGETCENTURY:\n year:${x} Century-> ${getCentury(x)} \n`);
+  // //...
+  // console.log(`\nSolution:\n year:${x} Century-> ${solution(x)} \n`);
 
-    if (getCentury(x) !== currentC) {
-        currentC = getCentury(x);
-        centuries.push({ year: x, century: getCentury(x) });
-    }
-    // console.log(`-----------------------------------------`)
+  if (getCentury(x) !== currentC) {
+    currentC = getCentury(x);
+    centuries.push({ year: x, century: getCentury(x) });
+  }
+  // console.log(`-----------------------------------------`)
 }
 
-console.log(`------------------****-----------------------`)
+console.log(`------------------****-----------------------`);
 
 console.log(centuries);
 
-
-
 // palindrom string
 
-const solution = inputString => inputString === inputString.split('').reverse().join('');
-
-
-
+const solution = (inputString) => inputString === inputString.split('').reverse().join('');

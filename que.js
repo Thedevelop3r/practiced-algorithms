@@ -9,13 +9,13 @@ The function should return an integer, the total time required.
 */
 
 function queueTime(customers, n) {
-    var w = new Array(n).fill(0);
-    for (let t of customers) {
-        let idx = w.indexOf(Math.min(...w));
-        w[idx] += t;
-    }
-    return Math.max(...w);
+  var w = new Array(n).fill(0);
+  for (let t of customers) {
+    let idx = w.indexOf(Math.min(...w));
+    w[idx] += t;
+  }
+  return Math.max(...w);
 }
 
-const q = queueTime([10, 2, 3, 3], 2)
-console.log(q)
+const q = queueTime([10, 2, 3, 3], 2);
+console.log(q);
