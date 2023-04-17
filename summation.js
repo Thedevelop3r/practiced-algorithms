@@ -6,9 +6,7 @@ function Summation(n) {
   }
   return sum;
 }
-
 const analysis = []; // analysis object
-
 //test starts
 for (let i = 200000; i < 500000000000; i = i + 50000) {
   const start = Date.now(); // track start time?
